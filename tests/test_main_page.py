@@ -1,11 +1,8 @@
 import allure
 
 from pages.home_page import HomePage
-from pages.registration_page import RegistrationPage
 from configs.urls import Urls
 from conftest import driver, user
-from locators.login_page_locators import LoginPageLocators
-from pages.base_page import BasePage
 
 class TestMainPage:
 

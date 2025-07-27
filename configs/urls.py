@@ -1,7 +1,7 @@
 class Urls:
     HOME_PAGE_URL = "https://stellarburgers.nomoreparties.site/"
-    LOGIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/login"
-    REGISTER_PAGE_URL = "https://stellarburgers.nomoreparties.site/register"
-    ACCOUNT_PROFILE_URL = "https://stellarburgers.nomoreparties.site/account/profile"
-    RECOVERY_PSW_PAGE_URL = "https://stellarburgers.nomoreparties.site/forgot-password"
-    RESET_PSW_PAGE_URL = "https://stellarburgers.nomoreparties.site/reset-password"
+    LOGIN_PAGE_URL = HOME_PAGE_URL + "login"
+    REGISTER_PAGE_URL = HOME_PAGE_URL + "register"
+    ACCOUNT_PROFILE_URL = HOME_PAGE_URL + "account/profile"
+    RECOVERY_PSW_PAGE_URL = HOME_PAGE_URL + "forgot-password"
+    RESET_PSW_PAGE_URL = HOME_PAGE_URL + "reset-password"

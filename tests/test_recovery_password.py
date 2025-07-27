@@ -23,9 +23,7 @@ class TestRecoveryPassword:
         test_email = 'test@example.com'
         recovery_page.enter_email(test_email)
         recovery_page.click_recovery_btn()
-
         recovery_page.wait_for_save_new_password_button()
-
         assert 'reset-password' in recovery_page.get_current_url()
 
     @allure.title("Клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его")
@@ -35,8 +33,6 @@ class TestRecoveryPassword:
         test_email = 'test@example.com'
         recovery_page.enter_email(test_email)
         recovery_page.click_recovery_btn()
-
         recovery_page.wait_for_save_new_password_button()
-
         recovery_page.click_show_password_icon()
         assert recovery_page.is_password_input_active(), 'Поле пароля не стало активным после клика по иконке'

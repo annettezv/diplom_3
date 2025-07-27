@@ -24,3 +24,7 @@ class RecoveryPage(BasePage):
     def is_password_input_active(self):
         element = self.find_element(self.locators.PASSWORD_INPUT)
         return element == self.get_active_element()
+
+    @allure.step("Дождаться появления кнопки сохранения нового пароля")
+    def wait_for_save_new_password_button(self):
+        self.wait_visibility_of_element(self.locators.SAVE_NEW_PSW_BTN)

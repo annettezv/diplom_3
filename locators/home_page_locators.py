@@ -1,5 +1,4 @@
-import By
-
+from selenium.webdriver.common.by import By
 
 class HomePageLocators:
     LOGIN_TO_ACC_BTN = (By.XPATH, ".//button[text()='Войти в аккаунт']")
