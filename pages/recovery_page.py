@@ -23,4 +23,4 @@ class RecoveryPage(BasePage):
     @allure.step("Проверить, что поле пароля активно (в фокусе)")
     def is_password_input_active(self):
         element = self.find_element(self.locators.PASSWORD_INPUT)
-        return element == self.driver.switch_to.active_element
+        return element == self.get_active_element()

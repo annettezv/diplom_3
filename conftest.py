@@ -1,26 +1,36 @@
-from configs.urls import Urls
-from selenium import webdriver
+
 import pytest
-import random as r
+from selenium import webdriver
+
+from configs.urls import Urls
+from locators.account_page_locators import AccountPageLocators
+from pages.account_page import AccountPage
+from pages.base_page import BasePage
+from pages.login_page import LoginPage
+from locators.login_page_locators import LoginPageLocators
+
 
 @pytest.fixture()
 def driver():
     driver = webdriver.Chrome()
-    driver.get(Urls.HOME_PAGE_URL)
+    driver.set_window_size(1920, 1080)
     yield driver
     driver.quit()
 
-@pytest.fixture(scope='function')
+
+@pytest.fixture()
 def user():
-    name = ('mike', 'john', 'nick', 'alex')
-    surname = ('smith', 'jackson', 'brown', 'luke')
-    email = r.choice(name) + r.choice(surname) + '18' + str(r.randint(100, 999)) + '@yandex.ru'
-    psw = r.randint(100000, 999999)
-    new_psw = r.randint(100000, 999999)
-    return {
-        'name': r.choice(name),
-        'surname': r.choice(surname),
-        'email': email,
-        'password': psw,
-        'new_password': new_psw
-    }
+    return {'name': 'test',
+            'email': 'test@test.ru',
+            'password': '123456'}
+
+
+@pytest.fixture(autouse=True)
+def setup(driver, user):
+    account_page = AccountPage(driver)
+    account_page.open_url(Urls.REGISTER_PAGE_URL)
+    account_page.register_user(user)
+    account_page.confirm_registration()
+    login_page = LoginPage(driver)
+    login_page.wait_for_login_header()
+

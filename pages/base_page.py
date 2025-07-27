@@ -1,11 +1,16 @@
 import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from selenium.webdriver import ActionChains
 import random as r
 
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
+
+    @allure.step("Открыть URL")
+    def open_url(self, url):
+        self.driver.get(url)
 
     @allure.step("Кликнуть на эелемент")
     def click_on_element(self, locator):
@@ -55,3 +60,24 @@ class BasePage:
     @allure.step("Подождать пока элемент видим")
     def wait_invisibility_of_element(self, locator):
         return WebDriverWait(self.driver, 50).until(expected_conditions.invisibility_of_element_located(locator))
+
+    @allure.step("Перетащить элемент")
+    def drag_and_drop(self, element, target):
+        actions = ActionChains(self.driver)
+        actions.drag_and_drop(element, target).perform()
+
+    @allure.step("Получить активный элемент")
+    def get_active_element(self):
+        return self.driver.switch_to.active_element
+
+    @allure.step("Получить текущий URL")
+    def get_current_url(self):
+        return self.driver.current_url
+
+    @allure.step("Проверить видимость элемента")
+    def is_element_displayed(self, locator):
+        return self.find_element(locator).is_displayed()
+
+    @allure.step("Получить текст элемента")
+    def get_element_text(self, locator):
+        return self.find_element(locator).text
