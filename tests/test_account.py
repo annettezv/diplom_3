@@ -1,17 +1,16 @@
 import allure
 
 from pages.account_page import AccountPage
-from configs.urls import Urls
+from pages.login_page import LoginPage
 from conftest import driver, user
-from pages.base_page import BasePage
 
 class TestAccount:
 
     @allure.title("Переход по клику на «Личный кабинет»")
     def test_redirect_to_account_page(self, driver, user):
-        base_page = BasePage(driver)
-        base_page.open_url(Urls.ACCOUNT_PROFILE_URL)
-        assert '/account/profile' in base_page.get_current_url()
+        account_page = AccountPage(driver)
+        account_page.open_account_profile()
+        assert '/account/profile' in account_page.get_current_url()
 
     @allure.title("Переход в раздел «История заказов»")
     def test_redirect_to_order_history(self, driver, user):
