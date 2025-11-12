@@ -9,8 +9,8 @@ class RegistrationPage(BasePage):
 
     @allure.step("Зарегистрировать пользователя")
     def register_user(self, user):
-        self.click_on_element(MainPageLocators.LOGIN_TO_ACC_BTN)
-        self.wait_visibility_of_element(LoginPageLocators.LOGIN_HEADER)
+        self.click_on_element(RegistrationPageLocators.LOGIN_TO_ACC_BTN)
+        self.wait_visibility_of_element(RegistrationPageLocators.LOGIN_HEADER)
         self.click_on_element(RegistrationPageLocators.REGISTER_LINK)
         self.wait_visibility_of_element(RegistrationPageLocators.REGISTER_HEADER)
         self.fill_input(RegistrationPageLocators.USER_NAME, user['name'])
