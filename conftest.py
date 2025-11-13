@@ -25,7 +25,7 @@ def user():
             'password': '123456'}
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture()
 def setup(driver, user):
     account_page = AccountPage(driver)
     account_page.open_url(Urls.REGISTER_PAGE_URL)
